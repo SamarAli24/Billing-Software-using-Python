@@ -1,0 +1,372 @@
+from tkinter import
+import math,random
+from tkinter import messagebox
+
+class Bill_app
+    def __init__(self,root)
+        self.root=root
+        self.root.geometry(1350x700+0+0)
+        self.root.title(Billing Software)
+        bg_color=black
+        title=Label(self.root,text=Billing Software ,bd=9 ,relief=GROOVE, bg=bg_color,fg=white,font=(times new roman,30,bold),pady=2).pack(fill=X)
+
+        ### Variable Declaration###
+
+
+
+
+        #cosmetics#
+
+        self.soap=IntVar()
+        self.wash=IntVar()
+        self.cream=IntVar()
+        self.brush=IntVar()
+        self.gel=IntVar()
+
+
+        #grocery#
+        self.rice=IntVar()
+        self.pulses=IntVar()
+        self.dry_fruits=IntVar()
+        self.masalas=IntVar()
+        self.sugar=IntVar()
+
+
+        #beverages#
+        self.sprite=IntVar()
+        self.pepsi=IntVar()
+        self.fanta=IntVar()
+        self.bigapple=IntVar()
+        self.cocktail=IntVar()
+
+
+
+
+       #Total Product Prices and Tax#
+
+        self.cosmetic_price=StringVar()
+        self.grocery_price=StringVar()
+        self.beverages_price=StringVar()
+
+
+
+        self.cosmetic_tax=StringVar()
+        self.grocery_tax=StringVar()
+        self.beverages_tax=StringVar()
+        
+
+
+
+
+
+        #Customer#
+        
+        self.customer_name=StringVar()
+        self.customer_phone=StringVar()   
+        self.bill_no=StringVar()
+        x=random.randint(50,20000)
+        self.bill_no.set(str(x))
+        
+        self.search_bill=StringVar()
+        self.total_bill_tax=IntVar()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ### Customer detail ###
+        f1=LabelFrame(self.root,text=Customer Detail , font=(times new roman,15,bold), bg=black,fg=red)
+        f1.place(x=0,y=80,relwidth=6)
+
+
+        cname=Label(f1,text=Customer Name,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=0,padx=18,pady=5)
+        cname_txt=Entry(f1,textvariable=self.customer_name,width=18,font=arial 15).grid(row=0,column=1,pady=5,padx=10)
+
+        cphn=Label(f1,text=Phone No,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=2,padx=18,pady=5)
+        cphn_txt=Entry(f1,textvariable=self.customer_phone,width=18,font=arial 15).grid(row=0,column=3,pady=5,padx=10)
+
+        cbill=Label(f1,text=Bill,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=4,padx=18,pady=5)
+        cbill_txt=Entry(f1,textvariable=self.bill_no,width=18,font=arial 15).grid(row=0,column=5,pady=5,padx=10)
+
+
+        bill_btn=Button(f1,text=search,width=10,font=arial 12 bold).grid(row=0,column=6,pady=10,padx=10)
+
+
+
+        ### Coosmetics ###
+        f2=LabelFrame(self.root,text=Toilet Items , font=(times new roman,15,bold), bg=black,fg=red)
+        f2.place(x=5,y=180,width=300,height=300)
+
+        Bath=Label(f2,text=Bath soap,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=0,padx=10,pady=10)
+        Bath_txt=Entry(f2,textvariable=self.soap,width=10,font=arial 15).grid(row=0,column=1,pady=5,padx=10)
+
+        face=Label(f2,text=face wash,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=1,column=0,padx=10,pady=10)
+        face_txt=Entry(f2,textvariable=self.wash,width=10,font=arial 15).grid(row=1,column=1,pady=5,padx=10)
+
+        cream=Label(f2,text=face cream,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=2,column=0,padx=10,pady=10)
+        cream_txt=Entry(f2,textvariable=self.cream,width=10,font=arial 15).grid(row=2,column=1,pady=5,padx=10)
+
+        Brush=Label(f2,text=Tooth Brush,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=3,column=0,padx=10,pady=10)
+        Brush_txt=Entry(f2,textvariable=self.brush,width=10,font=arial 15).grid(row=3,column=1,pady=5,padx=10)
+
+        gel=Label(f2,text=Hair gel,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=4,column=0,padx=10,pady=10)
+        gel_txt=Entry(f2,textvariable=self.gel,width=10,font=arial 15).grid(row=4,column=1,pady=5,padx=10)
+
+
+
+             ### grocery ###
+        f3=LabelFrame(self.root,text=Grocery Items , font=(times new roman,15,bold),bg=black,fg=red)
+        f3.place(x=330,y=180,width=300,height=300)
+
+        rice1=Label(f3,text=rice ,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=0,padx=10,pady=10)
+        rice_txt=Entry(f3,textvariable=self.rice,width=10,font=arial 15).grid(row=0,column=1,pady=5,padx=10)
+
+        pulses1=Label(f3,text=pulses,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=1,column=0,padx=10,pady=10)
+        pulses_txt=Entry(f3,width=10,textvariable=self.pulses,font=arial 15).grid(row=1,column=1,pady=5,padx=10)
+
+        df=Label(f3,text=dry fruits,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=2,column=0,padx=10,pady=10)
+        df_txt=Entry(f3,width=10,textvariable=self.dry_fruits,font=arial 15).grid(row=2,column=1,pady=5,padx=10)
+
+        m=Label(f3,text=masalas,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=3,column=0,padx=10,pady=10)
+        m_txt=Entry(f3,width=10,textvariable=self.masalas,font=arial 15).grid(row=3,column=1,pady=5,padx=10)
+
+        g=Label(f3,text=Sugar,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=4,column=0,padx=10,pady=10)
+        g_txt=Entry(f3,width=10,textvariable=self.sugar,font=arial 15).grid(row=4,column=1,pady=5,padx=10)
+
+
+
+          ### drinks ###
+        f4=LabelFrame(self.root,text=Beverages , font=(times new roman,15,bold), bg=black,fg=red)
+        f4.place(x=660,y=180,width=300,height=300)
+
+        s=Label(f4,text=Sprite,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=0,padx=10,pady=10)
+        s_txt=Entry(f4,width=10,textvariable=self.sprite,font=arial 15).grid(row=0,column=1,pady=5,padx=10)
+
+        p=Label(f4,text=Pepsi,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=1,column=0,padx=10,pady=10)
+        p_txt=Entry(f4,width=10,textvariable=self.pepsi,font=arial 15).grid(row=1,column=1,pady=5,padx=10)
+
+        f=Label(f4,text=fanta,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=2,column=0,padx=10,pady=10)
+        f_txt=Entry(f4,width=10,textvariable=self.fanta,font=arial 15).grid(row=2,column=1,pady=5,padx=10)
+
+        ba=Label(f4,text=Big Apple,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=3,column=0,padx=10,pady=10)
+        ba_txt=Entry(f4,width=10,textvariable=self.bigapple,font=arial 15).grid(row=3,column=1,pady=5,padx=10)
+
+        c=Label(f4,text=cocktail,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=4,column=0,padx=10,pady=10)
+        c_txt=Entry(f4,width=10,textvariable=self.cocktail,font=arial 15).grid(row=4,column=1,pady=5,padx=10)
+
+
+
+
+        f5=Frame(self.root,bd=10,relief=GROOVE)
+        f5.place(x=1000,y=180,width=350,height=300)
+        bill_title=Label(f5,text=Bill , font=(times new roman,15,bold), bg=white,fg=black).pack(fill=X)
+        scroll=Scrollbar(f5,orient=VERTICAL)
+        self.txtarea=Text(f5,yscrollcommand=scroll.set)
+        scroll.pack(side=RIGHT,fill=Y)
+        scroll.config(command=self.txtarea.yview)
+        self.txtarea.pack()
+        self.welcome_area()
+
+
+
+
+         ### Button Frame ###
+
+        f6=LabelFrame(self.root,text=Bill Menu , font=(times new roman,15,bold), bg=black,fg=red)
+        f6.place(x=0,y=490,relwidth=1,height=150)
+        m1=Label(f6,text=Total Cosmetic Price,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=0,padx=20,pady=1,sticky=w)
+        m1_txt=Entry(f6,width=10,textvariable=self.cosmetic_price,font=arial 15).grid(row=0,column=1,pady=1,padx=8)
+
+
+        m2=Label(f6,text=Total Grocery Price,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=1,column=0,padx=20,pady=1,sticky=w)
+        m2_txt=Entry(f6,width=10,textvariable=self.grocery_price,font=arial 15).grid(row=1,column=1,pady=1,padx=8)
+
+        m3=Label(f6,text=Total Bevrages Price,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=2,column=0,padx=20,pady=1,sticky=w)
+        m3_txt=Entry(f6,width=10,textvariable=self.beverages_price,font=arial 15).grid(row=2,column=1,pady=1,padx=8)
+
+
+        t1=Label(f6,text=Cosmetic Tax,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=0,column=2,padx=20,pady=1,sticky=w)
+        t1_txt=Entry(f6,width=10,textvariable=self.cosmetic_tax,font=arial 15).grid(row=0,column=3,pady=1,padx=8)
+
+
+        t2=Label(f6,text=Grocery Tax,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=1,column=2,padx=20,pady=1,sticky=w)
+        t2_txt=Entry(f6,width=10,textvariable=self.grocery_tax,font=arial 15).grid(row=1,column=3,pady=1,padx=8)
+
+        t3=Label(f6,text=Beverages Text,bg=black,fg=white , font=(times new roman,15,bold)).grid(row=2,column=2,padx=20,pady=1,sticky=w)
+        t3_txt=Entry(f6,width=10,textvariable=self.beverages_tax,font=arial 15).grid(row=2,column=3,pady=1,padx=8)
+
+
+
+        btn=Frame(f6,bd=5,relief=GROOVE)
+        btn.place(x=700,width=630,height=100)
+
+
+        total_btn=Button(btn,command=self.total,text=Total,bg=blue,fg=white,font=(times new roman,13,bold),width=13,height=3).grid(row=0,column=0,padx=5,pady=5)
+
+        Gbill_btn=Button(btn,command=self.welcome_area,text=Generate Bill,bg=blue,fg=white,font=(times new roman,13,bold),width=13,height=3).grid(row=0,column=1,padx=5,pady=5)
+
+        clear_btn=Button(btn,command=self.clear_bill,text=Clear,bg=blue,fg=white,font=(times new roman,13,bold),width=13,height=3).grid(row=0,column=2,padx=5,pady=5)
+
+        Exit_btn=Button(btn,command=self.Exit_app,text=Exit,bg=red,fg=white,font=(times new roman,13,bold),width=13,height=3).grid(row=0,column=3,padx=5,pady=5)
+
+        
+
+    def total(self)
+        self.total_cosmetic_price=float(
+
+                (self.soap.get()40)+
+                (self.wash.get()250)+
+                (self.cream.get()200)+
+                (self.brush.get()80)+
+                (self.gel.get()300)
+
+                                       )
+        self.cosmetic_price.set(Rs.+str(self.total_cosmetic_price))
+        self.cosmetic_tax.set(Rs.+str(self.total_cosmetic_price0.05))
+
+
+        self.total_grocery_price=float(
+
+                (self.rice.get()180)+
+                (self.pulses.get()100)+
+                (self.dry_fruits.get()400)+
+                (self.masalas.get()80)+
+                (self.sugar.get()140)
+
+                                       )
+        self.grocery_price.set(Rs.+str(self.total_grocery_price))
+        self.grocery_tax.set(Rs.+str(self.total_grocery_price0.05))
+
+
+
+
+        self.total_beverages_price=float(
+
+                (self.sprite.get()140)+
+                (self.pepsi.get()130)+
+                (self.fanta.get()140)+
+                (self.cocktail.get()180)+
+                (self.bigapple.get()110)
+
+                                       )
+        self.beverages_price.set(Rs.+str(self.total_beverages_price))
+        self.beverages_tax.set(Rs.+str(self.total_beverages_price0.05))
+
+
+    
+        self.total_bill_tax=float(
+            self.total_cosmetic_price +
+            self.total_grocery_price +
+            self.total_beverages_price
+            )
+
+
+
+
+
+
+
+    def welcome_area(self)
+        self.txtarea.delete(1.0,END)
+        self.txtarea.insert(END,Welcome to Ali's Mart)
+        self.txtarea.insert(END,fnBill No  {self.bill_no.get()})
+        self.txtarea.insert(END,fnCustomer Name  {self.customer_name.get()})
+        self.txtarea.insert(END,fnPhone Number  {self.customer_phone.get()})
+        self.txtarea.insert(END,fn--------------------------------------)
+
+        self.txtarea.insert(END,fnTotal Bill  {self.total_bill_tax})
+        self.txtarea.insert(END,fn--------------------------------------)
+
+
+
+    def customer_bill(self)
+        if self.customer_name.get()== or self.customer_phone.get()==
+            messagebox.showerror(Error! ,Customer Details are required..! )
+
+
+
+    def clear_bill(self)
+        #cosmetics#
+
+        self.soap.set(0)
+        self.wash.set(0)
+        self.cream.set(0)
+        self.brush.set(0)
+        self.gel.set(0)
+
+
+        #grocery#
+        self.rice.set(0)
+        self.pulses.set(0)
+        self.dry_fruits.set(0)
+        self.masalas.set(0)
+        self.sugar.set(0)
+
+
+        #beverages#
+        self.sprite.set(0)
+        self.pepsi.set(0)
+        self.fanta.set(0)
+        self.bigapple.set(0)
+        self.cocktail.set(0)
+
+
+
+
+       #Total Product Prices and Tax#
+
+        self.cosmetic_price.set()
+        self.grocery_price.set()
+        self.beverages_price.set()
+
+
+
+        self.cosmetic_tax.set()
+        self.grocery_tax.set()
+        self.beverages_tax.set()
+        
+
+
+
+
+
+        #Customer#
+        
+        self.customer_name.set()
+        self.customer_phone.set()   
+        self.bill_no.set()
+        x=random.randint(50,20000)
+        self.bill_no.set(str(x))
+        
+        self.search_bill.set()
+        self.total_bill_tax.set(0)
+
+        self.welcome_area()
+
+
+    def Exit_app(self)
+        self.root.destroy()
+
+
+
+
+
+
+
+
+
+root=Tk()
+object=Bill_app(root)
+root.mainloop()
